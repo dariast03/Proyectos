@@ -1,0 +1,50 @@
+.notificaciones-page {
+    padding: 20px;
+  }
+  
+  .notificaciones-page h1 {
+    margin-bottom: 20px;
+  }
+  
+  .notificaciones-page ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .notificaciones-page li {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .notificaciones-page li p {
+    margin: 0;
+  }
+  
+  .notificaciones-page li span {
+    display: block;
+    margin-top: 5px;
+    color: #888;
+    font-size: 0.9em;
+  }
+  
+  .notificaciones-page li button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .notificaciones-page li button:hover {
+    background-color: #0056b3;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  

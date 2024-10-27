@@ -1,0 +1,53 @@
+.escribir-resena-page {
+  padding: 20px;
+}
+
+.escribir-resena-page h1 {
+  margin-bottom: 20px;
+}
+
+.escribir-resena-page form {
+  display: flex;
+  flex-direction: column;
+}
+
+.rating {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.star {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.filled {
+  color: gold;
+}
+
+.escribir-resena-page textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+}
+
+.escribir-resena-page button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.escribir-resena-page button:hover {
+  background-color: #0056b3;
+}
+
+.escribir-resena-page p {
+  margin-top: 10px;
+  color: green;
+}

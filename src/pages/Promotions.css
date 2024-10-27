@@ -1,0 +1,81 @@
+.promotions-page {
+  padding: 20px;
+}
+
+/* Banner Styling */
+.banner {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  margin-bottom: 20px;
+}
+
+/* Promotions Styling */
+.promotions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.promo-card {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.promo-card h2 {
+  margin-bottom: 10px;
+}
+
+.promo-card .time-left {
+  color: red;
+  font-weight: bold;
+}
+
+.promo-dishes {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.dish {
+  min-width: 150px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.dish img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.dish h3 {
+  margin: 10px 0;
+}
+
+.dish p {
+  margin: 5px 0;
+}
+
+.dish button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dish button:hover {
+  background-color: #0056b3;
+}

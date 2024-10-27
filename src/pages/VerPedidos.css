@@ -1,0 +1,29 @@
+.ver-pedidos {
+    padding: 20px;
+  }
+  
+  .ver-pedidos h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .pedidos-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .pedido-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .pedido-item h3 {
+    margin: 0 0 10px 0;
+  }
+  
+  .pedido-item p {
+    margin: 5px 0;
+  }
+  
