@@ -19,6 +19,7 @@ const PagoExitoso = () => {
     <div className="pago-exitoso">
       <h1>Pago realizado con éxito</h1>
       <p>Gracias por tu compra.</p>
+      <div className="smiley">😊</div>
     </div>
   );
 };

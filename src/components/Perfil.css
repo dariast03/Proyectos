@@ -1,0 +1,58 @@
+/* Perfil.css */
+
+.profile-menu {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: absolute;
+    top: 60px; /* Ajusta según la posición de tu navbar */
+    right: 20px; /* Ajusta según la posición de tu navbar */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos horizontalmente */
+  }
+  
+  .profile-picture {
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .profile-picture img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff6f61;
+  }
+  
+  .profile-menu button {
+    background: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .profile-menu button:hover {
+    background: #e65c50;
+    transform: scale(1.05);
+  }
+  
+  .profile-menu a {
+    text-decoration: none;
+    width: 100%;
+  }
+  
+  .profile-menu a button {
+    width: 100%;
+  }
+  

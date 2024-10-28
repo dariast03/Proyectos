@@ -1,9 +1,20 @@
-.ver-pedidos {
+/* VerPedidos.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .ver-pedidos {
     padding: 20px;
   }
   
   .ver-pedidos h1 {
     text-align: center;
+    color: #333;
     margin-bottom: 20px;
   }
   
@@ -13,17 +24,25 @@
   }
   
   .pedido-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    text-align: center; /* Centra el texto dentro de la tarjeta */
   }
   
-  .pedido-item h3 {
-    margin: 0 0 10px 0;
+  .pedido-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .pedido-item h3, .pedido-item p {
+    color: #333;
+    margin: 5px 0;
   }
   
   .pedido-item p {
-    margin: 5px 0;
+    color: #666;
   }
   

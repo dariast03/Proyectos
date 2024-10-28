@@ -1,77 +1,79 @@
-/* Estilos únicos para la navbar */
-.deliveryApp-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  font-family: Arial, sans-serif;
-}
+/* Navbar.css */
 
-.deliveryApp-navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.deliveryApp-navbar-left button {
-  background-color: transparent;
-  border: none;
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.deliveryApp-navbar-left button:hover {
-  color: #007BFF;
-}
-
-.deliveryApp-navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Espacio entre los íconos */
-  margin-right: 20px; /* Añade margen a la derecha para no pegarse al borde */
-}
-
-.deliveryApp-cart-icon {
-  font-size: 24px; /* Tamaño del ícono del carrito */
-  cursor: pointer;
-  position: relative;
-  padding: 8px; /* Espacio alrededor del ícono */
-}
-
-.deliveryApp-cart-count {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 12px;
-}
-
-.deliveryApp-profile-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  overflow: hidden;
-  cursor: pointer;
-  background-color: #f0f0f0;
-  padding: 4px; /* Espacio alrededor del ícono */
-}
-
-.deliveryApp-profile-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.navbar-container {
+    background: #ff6f61;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .navbar-top, .navbar-bottom {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-link {
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .navbar-button {
+    background: white;
+    color: #ff6f61;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navbar-button:hover {
+    background: #e65c50;
+    transform: scale(1.05);
+  }
+  
+  .navbar-notifications-icon, .navbar-cart-icon, .navbar-profile-icon {
+    position: relative;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  .navbar-notifications-count, .navbar-cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: white;
+    color: #ff6f61;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+  
+  .navbar-profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .navbar-top, .navbar-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .navbar-link {
+      margin: 5px 0;
+    }
+  }
+  

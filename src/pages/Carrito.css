@@ -1,79 +1,115 @@
-.carrito {
+/* Carrito.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .carrito {
     padding: 20px;
-    margin-bottom: 20px;
-}
+  }
   
-.carrito h1 {
+  .carrito h1 {
     text-align: center;
-}
+    color: #333;
+    margin-bottom: 20px;
+  }
   
-.carrito-items {
+  .carrito-items {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
+  }
   
-.carrito-item {
+  .carrito-item {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     display: flex;
     align-items: center;
-    gap: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-}
+    transition: transform 0.3s ease;
+  }
   
-.carrito-item img {
+  .carrito-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .carrito-item img {
     width: 100px;
     height: 100px;
+    border-radius: 10px;
     object-fit: cover;
-    border-radius: 5px;
-}
+    margin-right: 20px;
+  }
   
-.carrito-item-details {
+  .carrito-item-details {
     flex: 1;
-}
+  }
   
-.carrito-item-details h3 {
-    margin: 0;
-}
+  .carrito-item-details h3 {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+    color: #333;
+  }
   
-.carrito-item-details p {
+  .carrito-item-details p {
     margin: 5px 0;
-}
+    color: #666;
+  }
   
-.quantity-controls {
+  .promocion-label {
+    color: #ff6f61;
+    font-weight: bold;
+  }
+  
+  .quantity-controls {
     display: flex;
     align-items: center;
     gap: 10px;
-}
+    margin-top: 10px;
+  }
   
-.quantity-controls .carrito-button {
-    background-color: #007bff;
+  .carrito-button {
+    background: #ff6f61;
     color: white;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.quantity-controls .carrito-button:hover {
-    background-color: #0056b3;
-}
-
-.carrito-total {
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .carrito-button:hover {
+    background: #e65c50;
+    transform: scale(1.05);
+  }
+  
+  .carrito-total {
     text-align: center;
     margin-top: 20px;
-}
-
-.checkout-button {
-    background-color: #28a745;
+  }
+  
+  .carrito-total h2 {
+    color: #333;
+  }
+  
+  .checkout-button {
+    background: #ff6f61;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-}
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+  }
   
-.checkout-button:hover {
-    background-color: #218838;
-}
+  .checkout-button:hover {
+    background: #e65c50;
+    transform: scale(1.05);
+  }
+  

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AdminNavbar from '../components/AdminNavbar';
+import './Promociones.css';
 
 const Promociones = ({ setIsLoggedIn }) => {
   const [promociones, setPromociones] = useState([]);
@@ -95,64 +95,63 @@ const Promociones = ({ setIsLoggedIn }) => {
 
   return (
     <div>
-      <AdminNavbar setIsLoggedIn={setIsLoggedIn} />
-      <h1>Promociones</h1>
-      <div>
-        <h2>Lista de Promociones</h2>
-        <ul>
+      <h1 className="promociones-title">Promociones</h1>
+      <div className="promociones-list">
+        <h2 className="promociones-subtitle">Lista de Promociones</h2>
+        <ul className="promociones-ul">
           {promociones.map(promocion => (
-            <li key={promocion.iD_Promocion}>
-              <p>{promocion.descripcion_Promocion} - {promocion.descuento}%</p>
-              <p>Inicio: {new Date(promocion.fecha_Inicio).toLocaleDateString()}</p>
-              <p>Fin: {new Date(promocion.fecha_Fin).toLocaleDateString()}</p>
-              <button onClick={() => setEditingPromocion(promocion)}>Editar Promoción</button>
+            <li key={promocion.iD_Promocion} className="promociones-item">
+              <p className="promociones-description">{promocion.descripcion_Promocion} - {promocion.descuento}%</p>
+              <p className="promociones-date">Inicio: {new Date(promocion.fecha_Inicio).toLocaleDateString()}</p>
+              <p className="promociones-date">Fin: {new Date(promocion.fecha_Fin).toLocaleDateString()}</p>
+              <button className="promociones-button" onClick={() => setEditingPromocion(promocion)}>Editar Promoción</button>
             </li>
           ))}
         </ul>
       </div>
-      <div>
-        <h2>Añadir Nueva Promoción</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
+      <div className="promociones-add">
+        <h2 className="promociones-subtitle">Añadir Nueva Promoción</h2>
+        <form onSubmit={handleSubmit} className="promociones-form">
+          <div className="promociones-form-group">
             <label>Descripción:</label>
             <input type="text" name="descripcion_Promocion" value={newPromocion.descripcion_Promocion} onChange={handleInputChange} required />
           </div>
-          <div>
+          <div className="promociones-form-group">
             <label>Fecha de Inicio:</label>
             <input type="date" name="fecha_Inicio" value={newPromocion.fecha_Inicio} onChange={handleInputChange} required />
           </div>
-          <div>
+          <div className="promociones-form-group">
             <label>Fecha de Fin:</label>
             <input type="date" name="fecha_Fin" value={newPromocion.fecha_Fin} onChange={handleInputChange} required />
           </div>
-          <div>
+          <div className="promociones-form-group">
             <label>Descuento:</label>
             <input type="number" name="descuento" value={newPromocion.descuento} onChange={handleInputChange} required />
           </div>
-          <button type="submit">Añadir Promoción</button>
+          <button type="submit" className="promociones-button">Añadir Promoción</button>
         </form>
       </div>
       {editingPromocion && (
-        <div>
-          <h2>Editar Promoción</h2>
-          <form onSubmit={handleEditSubmit}>
-            <div>
+        <div className="promociones-edit">
+          <h2 className="promociones-subtitle">Editar Promoción</h2>
+          <form onSubmit={handleEditSubmit} className="promociones-form">
+            <div className="promociones-form-group">
               <label>Descripción:</label>
               <input type="text" name="descripcion_Promocion" value={editingPromocion.descripcion_Promocion} onChange={handleEditInputChange} required />
             </div>
-            <div>
+            <div className="promociones-form-group">
               <label>Fecha de Inicio:</label>
               <input type="date" name="fecha_Inicio" value={editingPromocion.fecha_Inicio} onChange={handleEditInputChange} required />
             </div>
-            <div>
+            <div className="promociones-form-group">
               <label>Fecha de Fin:</label>
               <input type="date" name="fecha_Fin" value={editingPromocion.fecha_Fin} onChange={handleEditInputChange} required />
             </div>
-            <div>
+            <div className="promociones-form-group">
               <label>Descuento:</label>
               <input type="number" name="descuento" value={editingPromocion.descuento} onChange={handleEditInputChange} required />
             </div>
-            <button type="submit">Guardar Cambios</button>
+            <button type="submit" className="promociones-button">Guardar Cambios</button>
           </form>
         </div>
       )}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './EditarPerfil.css'
 
 const EditarPerfil = () => {
   const [modo, setModo] = useState(null); // 'usuario' o 'cliente'

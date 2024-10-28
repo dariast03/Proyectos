@@ -1,81 +1,146 @@
-.promotions-page {
-  padding: 20px;
-}
+/* Promotions.css */
 
-/* Banner Styling */
-.banner {
-  text-align: center;
-  padding: 20px;
-  background-color: #f8f9fa;
-  margin-bottom: 20px;
-}
-
-/* Promotions Styling */
-.promotions {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.promo-card {
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.promo-card h2 {
-  margin-bottom: 10px;
-}
-
-.promo-card .time-left {
-  color: red;
-  font-weight: bold;
-}
-
-.promo-dishes {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-}
-
-.dish {
-  min-width: 150px;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.dish img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.dish h3 {
-  margin: 10px 0;
-}
-
-.dish p {
-  margin: 5px 0;
-}
-
-.dish button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.dish button:hover {
-  background-color: #0056b3;
-}
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .promotions-page {
+    padding: 20px;
+  }
+  
+  .banner {
+    text-align: center;
+    background: #ff6f61;
+    color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .banner h1 {
+    font-size: 2.5em;
+    margin: 0;
+    animation: fadeInDown 1s ease-in-out;
+  }
+  
+  .banner p {
+    font-size: 1.2em;
+    margin: 10px 0 0;
+    animation: fadeInUp 1s ease-in-out;
+  }
+  
+  .promotions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .promo-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1 1 calc(33.333% - 40px); /* Tres tarjetas por fila con espacio entre ellas */
+    transition: transform 0.3s ease;
+    text-align: center;
+  }
+  
+  .promo-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .promo-card h2, .promo-card p {
+    color: #ff0000; /* Cambia el color del texto a rojo */
+    margin: 5px 0;
+  }
+  
+  .time-left {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .promo-dishes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .dish {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    min-width: 200px;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dish:hover {
+    transform: scale(1.05);
+  }
+  
+  .dish img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 150px; /* Altura máxima para todas las imágenes */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
+    border-radius: 10px;
+  }
+  
+  .dish h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+  
+  .dish p {
+    color: #666;
+    text-align: center;
+  }
+  
+  .dish button {
+    background: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .dish button:hover {
+    background: #e65c50;
+    transform: scale(1.05);
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

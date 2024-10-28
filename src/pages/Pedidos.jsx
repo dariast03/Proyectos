@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import AdminNavbar from '../components/AdminNavbar';
 
 const Pedidos = ({ setIsLoggedIn }) => {
   const [menus, setMenus] = useState([]);
@@ -79,7 +78,6 @@ const Pedidos = ({ setIsLoggedIn }) => {
 
   return (
     <div>
-      <AdminNavbar setIsLoggedIn={setIsLoggedIn} />
       <h1>Pedidos</h1>
       <div>
         <h2>Lista de Pedidos</h2>

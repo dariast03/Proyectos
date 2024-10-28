@@ -1,0 +1,92 @@
+/* Resena.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .escribir-resena-page {
+    padding: 20px;
+  }
+  
+  .escribir-resena-page h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total del elemento */
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  
+  .star {
+    font-size: 2em;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s ease;
+  }
+  
+  .star.filled {
+    color: #ff6f61;
+  }
+  
+  .star:hover,
+  .star:focus {
+    color: #e65c50;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total del elemento */
+    margin-bottom: 15px;
+    resize: vertical;
+  }
+  
+  button {
+    background: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background: #e65c50;
+    transform: scale(1.05);
+  }
+  
+  .mensaje {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+  }
+  

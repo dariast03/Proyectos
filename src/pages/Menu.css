@@ -1,65 +1,130 @@
-.menu-page {
+/* Menu.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .menu-page {
     padding: 20px;
   }
   
-  /* Banner Styling */
-  .banner {
+  .banner-menu, .banner {
     text-align: center;
-    padding: 20px;
-    background-color: #f8f9fa;
+    background: #ff6f61;
+    color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  /* Menu del Día Styling */
+  .banner-menu h1, .banner h1 {
+    font-size: 2.5em;
+    margin: 0;
+    animation: fadeInDown 1s ease-in-out;
+  }
+  
+  .banner-menu p, .banner p {
+    font-size: 1.2em;
+    margin: 10px 0 0;
+    animation: fadeInUp 1s ease-in-out;
+  }
+  
   .menu-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
   }
   
   .menu-section h2 {
-    margin-bottom: 10px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
   }
   
-  .scrollable-dishes {
+  .scrollable-dishes-horizontal {
     display: flex;
-    gap: 10px;
     overflow-x: auto;
-    padding-bottom: 10px;
+    gap: 20px;
+    padding: 10px 0;
   }
   
   .dish {
-    min-width: 150px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-    flex-shrink: 0;
-  }
-  
-  /* Imagen Styling */
-  .dish img {
-    width: 150px; /* Ajusta este valor según sea necesario */
-    height: 150px; /* Ajusta este valor según sea necesario */
-    object-fit: cover;
-    border-radius: 8px; /* Opcional: para redondear las esquinas de las imágenes */
-  }
-  
-  /* Promotions Styling */
-  .promotions h2 {
-    margin-bottom: 10px;
-  }
-  
-  .promo-cards {
+    min-width: 200px;
+    transition: transform 0.3s ease;
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
   }
   
-  .promo-card {
-    flex: 1;
-    padding: 20px;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+  .dish:hover {
+    transform: scale(1.05);
+  }
+  
+  .dish img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 150px; /* Altura máxima para todas las imágenes */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
+    border-radius: 10px;
+  }
+  
+  .dish h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+  
+  .dish p {
+    color: #666;
     text-align: center;
+  }
+  
+  .dish button {
+    background: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .dish button:hover {
+    background: #e65c50;
+    transform: scale(1.05);
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   

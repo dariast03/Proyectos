@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import AdminNavbar from '../components/AdminNavbar';
+import { Link, useNavigate } from 'react-router-dom';
+import './MenuYPlatos.css';
 
 const MenuYPlatos = ({ setIsLoggedIn }) => {
   const [menus, setMenus] = useState([]);
@@ -15,7 +16,7 @@ const MenuYPlatos = ({ setIsLoggedIn }) => {
   const [imagenPlato, setImagenPlato] = useState(null);
   const [promociones, setPromociones] = useState([]);
   const [restauranteId, setRestauranteId] = useState(null);
-  const [editingPlato, setEditingPlato] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const id = localStorage.getItem('restauranteId');
@@ -70,14 +71,6 @@ const MenuYPlatos = ({ setIsLoggedIn }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewPlato((prevPlato) => ({
-      ...prevPlato,
-      [name]: value,
-    }));
-  };
-
-  const handleEditInputChange = (e) => {
-    const { name, value } = e.target;
-    setEditingPlato((prevPlato) => ({
       ...prevPlato,
       [name]: value,
     }));
@@ -158,73 +151,18 @@ const MenuYPlatos = ({ setIsLoggedIn }) => {
     }
   };
 
-  const handleEditSubmit = async (e) => {
-    e.preventDefault();
-    let imagenUrl = editingPlato.imagenUrl;
-
-    if (imagenPlato) {
-      const formData = new FormData();
-      formData.append('file', imagenPlato);
-      formData.append('fileName', imagenPlato.name);
-
-      const uploadResponse = await fetch(`https://localhost:7263/api/Usuarios/SubirImagen?fileName=${imagenPlato.name}`, {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (uploadResponse.ok) {
-        imagenUrl = `src/img/platos/${imagenPlato.name}`;
-      } else {
-        alert('Error al subir la imagen');
-        return;
-      }
-    }
-
-    const platoData = { ...editingPlato, imagenUrl };
-
-    try {
-      const response = await fetch(`https://localhost:7263/api/Platos/Actualizar/${editingPlato.iD_Plato}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(platoData),
-      });
-
-      if (response.ok) {
-        alert('Plato actualizado con éxito');
-        setEditingPlato(null);
-        fetchPlatos();
-      } else {
-        alert('Error al actualizar el plato');
-      }
-    } catch (error) {
-      console.error('Error al actualizar el plato:', error);
-    }
-  };
-
   return (
     <div>
-      <AdminNavbar setIsLoggedIn={setIsLoggedIn} />
-      <h1>Menú y Platos</h1>
+      <h1>Listar Menú</h1>
       <div>
-        <h2>Menús</h2>
-        <ul>
-          {menus.map((menu) => (
-            <li key={menu.iD_Menu}>
-              {menu.descripcion} - {menu.palto.nombre_Plato} ({menu.palto.categoria_Plato})
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <h2>Platos</h2>
         <ul>
           {platos.map((plato) => (
             <li key={plato.iD_Plato}>
               <img src={plato.imagenUrl} alt={plato.nombre_Plato} width="100" />
               {plato.nombre_Plato} - {plato.descripcion} ({plato.categoria_Plato}) - ${plato.precio_Referencia}
-              <button onClick={() => setEditingPlato(plato)}>Editar Plato</button>
+              <Link to={`/editar-plato/${plato.iD_Plato}`}>
+                <button>Editar Plato</button>
+              </Link>
             </li>
           ))}
         </ul>
@@ -253,61 +191,21 @@ const MenuYPlatos = ({ setIsLoggedIn }) => {
             <input type="file" onChange={handleFileChange} />
           </div>
           <div>
-                    <label>Promoción:</label>
-                    <select name="iD_Promocion" value={newPlato.iD_Promocion} onChange={handleInputChange}>
-                      <option value="0">Sin Promoción</option>
-                      {promociones.map((promocion) => (
-                        <option key={promocion.iD_Promocion} value={promocion.iD_Promocion}>
-                          {promocion.descripcion_Promocion} - {promocion.descuento}%
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <button type="submit">Añadir Plato</button>
-                </form>
-              </div>
-              {editingPlato && (
-                <div>
-                  <h2>Editar Plato</h2>
-                  <form onSubmit={handleEditSubmit}>
-                    <div>
-                      <label>Nombre del Plato:</label>
-                      <input type="text" name="nombre_Plato" value={editingPlato.nombre_Plato} onChange={handleEditInputChange} required />
-                    </div>
-                    <div>
-                      <label>Descripción:</label>
-                      <input type="text" name="descripcion" value={editingPlato.descripcion} onChange={handleEditInputChange} required />
-                    </div>
-                    <div>
-                      <label>Categoría del Plato:</label>
-                      <input type="text" name="categoria_Plato" value={editingPlato.categoria_Plato} onChange={handleEditInputChange} required />
-                    </div>
-                    <div>
-                      <label>Precio de Referencia:</label>
-                      <input type="number" name="precio_Referencia" value={editingPlato.precio_Referencia} onChange={handleEditInputChange} required />
-                    </div>
-                    <div>
-                      <label>Imagen del Plato:</label>
-                      <input type="file" onChange={handleFileChange} />
-                    </div>
-                    <div>
-                      <label>Promoción:</label>
-                      <select name="iD_Promocion" value={editingPlato.iD_Promocion} onChange={handleEditInputChange}>
-                        <option value="0">Sin Promoción</option>
-                        {promociones.map((promocion) => (
-                          <option key={promocion.iD_Promocion} value={promocion.iD_Promocion}>
-                            {promocion.descripcion_Promocion} - {promocion.descuento}%
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <button type="submit">Guardar Cambios</button>
-                  </form>
-                </div>
-              )}
-            </div>
-          );
-        };
-        
-        export default MenuYPlatos;
-        
+            <label>Promoción:</label>
+            <select name="iD_Promocion" value={newPlato.iD_Promocion} onChange={handleInputChange}>
+              <option value="0">Sin Promoción</option>
+              {promociones.map((promocion) => (
+                <option key={promocion.iD_Promocion} value={promocion.iD_Promocion}>
+                  {promocion.descripcion_Promocion}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button type="submit">Añadir Plato</button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default MenuYPlatos;

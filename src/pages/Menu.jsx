@@ -35,7 +35,7 @@ const Menu = ({ isLoggedIn, handleAddToCart }) => {
     <div className="menu-page">
       {isLoggedIn ? (
         <>
-          <section className="banner">
+          <section className="banner-menu">
             <h1>¡Bienvenido de nuevo a DeliveryApp!</h1>
             <p>Explora los platos recomendados para ti.</p>
           </section>
@@ -43,7 +43,7 @@ const Menu = ({ isLoggedIn, handleAddToCart }) => {
           {Object.keys(groupedMenus).map((restaurantName) => (
             <section key={restaurantName} className="menu-section">
               <h2>{restaurantName}</h2>
-              <div className="scrollable-dishes">
+              <div className="scrollable-dishes-horizontal">
                 {groupedMenus[restaurantName].map((menu) => (
                   <div key={menu.iD_Plato} className="dish">
                     <img src={menu.palto.imagenUrl} alt={menu.palto.nombre_Plato} />
@@ -66,7 +66,7 @@ const Menu = ({ isLoggedIn, handleAddToCart }) => {
           {Object.keys(groupedMenus).map((restaurantName) => (
             <section key={restaurantName} className="menu-section">
               <h2>{restaurantName}</h2>
-              <div className="scrollable-dishes">
+              <div className="scrollable-dishes-horizontal">
                 {groupedMenus[restaurantName].map((menu) => (
                   <div key={menu.iD_Plato} className="dish">
                     <img src={menu.palto.imagenUrl} alt={menu.palto.nombre_Plato} />

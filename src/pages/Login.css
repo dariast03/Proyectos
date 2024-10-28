@@ -1,4 +1,4 @@
-/* Pagos.css */
+/* Login.css */
 
 body {
     font-family: 'Arial', sans-serif;
@@ -8,34 +8,31 @@ body {
     overflow-x: hidden;
   }
   
-  .pagos {
+  form {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    max-width: 400px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total del elemento */
   }
   
-  .pagos h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .pagos p {
-    text-align: center;
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
+  form div {
     margin-bottom: 15px;
   }
   
-  .form-group label {
+  form label {
     display: block;
     margin-bottom: 5px;
     color: #333;
   }
   
-  .form-group select,
-  .form-group input[type="text"] {
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -43,11 +40,7 @@ body {
     box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total del elemento */
   }
   
-  .tarjeta-info {
-    margin-top: 20px;
-  }
-  
-  .pago-button {
+  button {
     background: #ff6f61;
     color: white;
     border: none;
@@ -55,11 +48,10 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
-    display: block;
-    margin: 20px auto 0;
+    margin-top: 10px;
   }
   
-  .pago-button:hover {
+  button:hover {
     background: #e65c50;
     transform: scale(1.05);
   }

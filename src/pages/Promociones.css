@@ -1,0 +1,110 @@
+/* Promociones.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .promociones-title, .promociones-subtitle {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .promociones-list, .promociones-add, .promociones-edit {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .promociones-ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .promociones-item {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    text-align: center; /* Centra el texto dentro de la tarjeta */
+  }
+  
+  .promociones-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .promociones-description, .promociones-date {
+    color: #000000; /* Cambia el color del texto a rojo */
+    margin: 5px 0;
+  }
+  
+  .promociones-button {
+    background: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .promociones-button:hover {
+    background: #e65c50;
+    transform: scale(1.05);
+  }
+  
+  .promociones-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .promociones-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .promociones-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .promociones-form-group input[type="text"],
+  .promociones-form-group input[type="date"],
+  .promociones-form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

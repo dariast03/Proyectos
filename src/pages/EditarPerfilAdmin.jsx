@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AdminNavbar from '../components/AdminNavbar';
 
 const EditarPerfilAdmin = ({ setIsLoggedIn }) => {
   const [modo, setModo] = useState(null); // 'usuario' o 'restaurante'
@@ -123,7 +122,7 @@ const EditarPerfilAdmin = ({ setIsLoggedIn }) => {
         categoria_Cocina: categoriaCocina,
         email: email,
         horario_Apertura: horarioApertura,
-        horario_Cierre: horarioCierre,
+        horario_Cierre: horario_Cierre,
         iD_Usuario: usuarioId,
       }),
     });
@@ -138,7 +137,6 @@ const EditarPerfilAdmin = ({ setIsLoggedIn }) => {
 
   return (
     <div>
-      <AdminNavbar setIsLoggedIn={setIsLoggedIn} />
       <h1>Editar Perfil</h1>
       <div>
         <button onClick={() => setModo('usuario')}>Editar Perfil Usuario</button>
@@ -237,7 +235,6 @@ const EditarPerfilAdmin = ({ setIsLoggedIn }) => {
               type="date"
               value={horarioApertura}
               onChange={(e) => setHorarioApertura(e.target.value)}
-              required
             />
           </div>
           <div>
@@ -246,7 +243,6 @@ const EditarPerfilAdmin = ({ setIsLoggedIn }) => {
               type="date"
               value={horarioCierre}
               onChange={(e) => setHorarioCierre(e.target.value)}
-              required
             />
           </div>
           <button type="submit">Actualizar Perfil Restaurante</button>

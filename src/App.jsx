@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import AdminNavbar from './components/AdminNavbar';
-import Home from './pages/Home';
-import HomeAdministrador from './pages/HomeAdministrador';
+import Navbar from './components/Navegacion';
+import AdminNavbar from './components/AdminNav';
+import Home from './pages/Inicio';
+import HomeAdministrador from './pages/Administrador';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import CompletarPerfil from './pages/CompletarPerfil';
@@ -16,20 +16,23 @@ import PagoExitoso from './pages/PagoExitoso';
 import Menu from './pages/Menu';
 import Promotions from './pages/Promotions';
 import Notificaciones from './pages/Notificaciones';
-import EscribirResena from './pages/EscribirResena';
+import EscribirResena from './pages/Resenas';
 import MenuYPlatos from './pages/MenuYPlatos';
 import Pedidos from './pages/Pedidos';
 import Promociones from './pages/Promociones';
-import EditarPerfilAdmin from './pages/EditarPerfilAdmin'; // Importa la nueva página
+import EditarPerfilAdmin from './pages/EditarPerfilAdmin';
+import EditarPlato from './pages/EditarPlato'; // Importa la nueva página de edición de plato
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [usuarioCompleto, setUsuarioCompleto] = useState(false);
   const [carrito, setCarrito] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const usuarioId = localStorage.getItem('usuarioId');
     const clienteId = localStorage.getItem('clienteId');
+    const restauranteId = localStorage.getItem('restauranteId');
 
     if (usuarioId) {
       setIsLoggedIn(true);
@@ -37,6 +40,10 @@ const App = () => {
 
     if (clienteId) {
       setUsuarioCompleto(true);
+    }
+
+    if (restauranteId) {
+      setIsAdmin(true);
     }
 
     const carritoGuardado = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -68,10 +75,11 @@ const App = () => {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/home-administrador" element={<AdminNavbar setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="*" element={<Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} carrito={carrito} />} />
-      </Routes>
+      {isAdmin ? (
+        <AdminNavbar setIsLoggedIn={setIsLoggedIn} />
+      ) : (
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} carrito={carrito} />
+      )}
       <div style={{ paddingTop: '60px' }}>
         <Routes>
           <Route path="/" element={<Home isLoggedIn={isLoggedIn} usuarioCompleto={usuarioCompleto} handleAddToCart={handleAddToCart} />} />
@@ -89,10 +97,11 @@ const App = () => {
           <Route path="/promotions" element={<Promotions handleAddToCart={handleAddToCart} />} />
           <Route path="/notificaciones" element={<Notificaciones />} />
           <Route path="/escribir-resena" element={<EscribirResena />} />
-          <Route path="/menu-y-platos" element={<MenuYPlatos />} />
+          <Route path="/menu-y-platos" element={<MenuYPlatos setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/pedidos" element={<Pedidos />} />
           <Route path="/promociones" element={<Promociones />} />
-          <Route path="/editar-perfil-admin" element={<EditarPerfilAdmin />} /> {/* Nueva ruta */}
+          <Route path="/editar-perfil-admin" element={<EditarPerfilAdmin />} />
+          <Route path="/editar-plato/:id" element={<EditarPlato />} /> {/* Nueva ruta para editar plato */}
         </Routes>
       </div>
     </Router>

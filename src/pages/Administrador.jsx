@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import AdminNavbar from '../components/AdminNavbar'; // Importa el nuevo AdminNavbar
-import './HomeAdministrador.css';
+import './Administrador.css';
 
 const HomeAdministrador = ({ setIsLoggedIn }) => {
   const [restaurante, setRestaurante] = useState(null);
@@ -26,7 +25,6 @@ const HomeAdministrador = ({ setIsLoggedIn }) => {
 
   return (
     <div className="home-administrador">
-      <AdminNavbar setIsLoggedIn={setIsLoggedIn} /> {/* Usa AdminNavbar */}
       <section className="admin-banner">
         <h1>¡Bienvenido al panel de administración!</h1>
       </section>

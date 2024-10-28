@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './ProfileMenu.css';
+import './Perfil.css';
 
 const ProfileMenu = ({ isLoggedIn, setIsLoggedIn }) => {
   const [imagenPerfilUrl, setImagenPerfilUrl] = useState('');

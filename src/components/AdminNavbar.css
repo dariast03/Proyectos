@@ -1,0 +1,46 @@
+/* Navbar.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .deliveryApp-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ff6f61;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .deliveryApp-navbar-left a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .deliveryApp-navbar-left a:hover {
+    color: #e65c50;
+  }
+  
+  .deliveryApp-navbar-right button {
+    background: #ff0000; /* Rojo */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .deliveryApp-navbar-right button:hover {
+    background: #cc0000; /* Rojo más oscuro */
+    transform: scale(1.05);
+  }
+  

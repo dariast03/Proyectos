@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './EscribirResena.css';
+import './Resena.css';
 
 const EscribirResena = () => {
   const [calificacion, setCalificacion] = useState(0);
   const [comentario, setComentario] = useState('');
   const [mensaje, setMensaje] = useState('');
-  const navigate = useNavigate(); // Hook para la navegación
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const clienteId = localStorage.getItem('clienteId');
-    const fechaResena = new Date().toISOString().split('T')[0]; // Fecha actual en formato YYYY-MM-DD
+    const fechaResena = new Date().toISOString().split('T')[0];
 
     const resena = {
       iD_Reseña: 0,
@@ -24,9 +24,7 @@ const EscribirResena = () => {
     try {
       const response = await fetch('https://localhost:7263/api/Reseñas/Insertar', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(resena),
       });
 
@@ -34,9 +32,7 @@ const EscribirResena = () => {
         setMensaje('Reseña enviada con éxito.');
         setCalificacion(0);
         setComentario('');
-        setTimeout(() => {
-          navigate('/'); // Redirigir a la página de inicio después de 2 segundos
-        }, 2000);
+        setTimeout(() => navigate('/'), 2000);
       } else {
         setMensaje('Error al enviar la reseña.');
       }
@@ -50,26 +46,34 @@ const EscribirResena = () => {
     <div className="escribir-resena-page">
       <h1>Escribir Reseña</h1>
       <form onSubmit={handleSubmit}>
-        <div className="rating">
+        <label htmlFor="calificacion" className="form-label">Calificación:</label>
+        <div className="rating" id="calificacion">
           {[1, 2, 3, 4, 5].map(star => (
             <span
               key={star}
-              className={star <= calificacion ? 'star filled' : 'star'}
+              className={`star ${star <= calificacion ? 'filled' : ''}`}
               onClick={() => setCalificacion(star)}
+              aria-label={`Estrella ${star}`}
+              role="button"
+              tabIndex="0"
             >
               ★
             </span>
           ))}
         </div>
+
+        <label htmlFor="comentario" className="form-label">Comentario:</label>
         <textarea
+          id="comentario"
           value={comentario}
           onChange={(e) => setComentario(e.target.value)}
           placeholder="Escribe tu reseña aquí..."
           required
         />
+
         <button type="submit">Enviar Reseña</button>
       </form>
-      {mensaje && <p>{mensaje}</p>}
+      {mensaje && <p className="mensaje">{mensaje}</p>}
     </div>
   );
 };

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import './Home.css';
+import './Inicio.css';
+
 const Home = ({ isLoggedIn, usuarioCompleto, handleAddToCart }) => {
   const [platos, setPlatos] = useState([]);
+
   useEffect(() => {
     const usuarioId = localStorage.getItem('usuarioId');
     const clienteId = localStorage.getItem('clienteId');
@@ -9,7 +11,6 @@ const Home = ({ isLoggedIn, usuarioCompleto, handleAddToCart }) => {
       if (clienteId) {
         // Usuario completo
       } else {
-        // Verifica si el perfil del usuario está completo
         const verificarPerfilCompleto = async (reintentos = 3) => {
           for (let i = 0; i < reintentos; i++) {
             try {
@@ -46,24 +47,26 @@ const Home = ({ isLoggedIn, usuarioCompleto, handleAddToCart }) => {
   }, []);
 
   return (
-    <div className="home">
+    <div className="home-container">
       {isLoggedIn ? (
         <>
-          <section className="banner">
+          <section className="home-banner">
             <h1>¡Bienvenido de nuevo a DeliveryApp!</h1>
             <p>Explora los platos recomendados para ti.</p>
           </section>
 
-          <section className="menu-dia">
+          <section className="home-menu-dia">
             <h2>Menú del Día</h2>
-            <div className="scrollable-dishes">
+            <div className="home-scrollable-dishes">
               {platos.map(plato => (
-                <div key={plato.iD_Plato} className="dish">
+                <div key={plato.iD_Plato} className="home-dish-card">
                   <img src={plato.imagenUrl} alt={plato.nombre_Plato} />
                   <h3>{plato.nombre_Plato}</h3>
                   <p>{plato.descripcion}</p>
-                  <p>Precio: {plato.precio_Referencia} Bs</p>
-                  <button onClick={() => handleAddToCart(plato)}>Añadir al carrito</button>
+                  <p className="home-price">Precio: {plato.precio_Referencia} Bs</p>
+                  <button className="home-add-cart-button" onClick={() => handleAddToCart(plato)}>
+                    Añadir al carrito
+                  </button>
                 </div>
               ))}
             </div>
@@ -71,19 +74,19 @@ const Home = ({ isLoggedIn, usuarioCompleto, handleAddToCart }) => {
         </>
       ) : (
         <>
-          <section className="banner">
+          <section className="home-banner">
             <h1>¡Bienvenido a DeliveryApp!</h1>
             <p>Inicia sesión para explorar nuestros deliciosos platos.</p>
           </section>
-          <section className="menu-dia">
+          <section className="home-menu-dia">
             <h2>Menú del Día (para visitantes)</h2>
-            <div className="scrollable-dishes">
+            <div className="home-scrollable-dishes">
               {platos.map(plato => (
-                <div key={plato.iD_Plato} className="dish">
+                <div key={plato.iD_Plato} className="home-dish-card">
                   <img src={plato.imagenUrl} alt={plato.nombre_Plato} />
                   <h3>{plato.nombre_Plato}</h3>
                   <p>{plato.descripcion}</p>
-                  <p>Precio: {plato.precio_Referencia} Bs</p>
+                  <p className="home-price">Precio: {plato.precio_Referencia} Bs</p>
                 </div>
               ))}
             </div>
