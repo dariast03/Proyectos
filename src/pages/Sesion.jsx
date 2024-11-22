@@ -10,7 +10,7 @@ const Sesion = ({ setIsLoggedIn, setUsuarioCompleto }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch('https://localhost:7263/api/Usuarios/Login', {
+        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -23,11 +23,11 @@ const Sesion = ({ setIsLoggedIn, setUsuarioCompleto }) => {
         });
 
         if (response.ok) {
-            const usuariosResponse = await fetch('https://localhost:7263/api/Usuarios/Listar');
+            const usuariosResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Listar');
             if (usuariosResponse.ok) {
                 const usuarios = await usuariosResponse.json();
-                const usuario = usuarios.find(u => 
-                    (u.nombre_Usuario === usuarioORemail || u.email === usuarioORemail) && 
+                const usuario = usuarios.find(u =>
+                    (u.nombre_Usuario === usuarioORemail || u.email === usuarioORemail) &&
                     u.contrasena === contrasena
                 );
 
@@ -52,7 +52,7 @@ const Sesion = ({ setIsLoggedIn, setUsuarioCompleto }) => {
             return;
         }
 
-        const restaurantesResponse = await fetch('https://localhost:7263/api/Restaurantes/Listar');
+        const restaurantesResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Restaurantes/Listar');
         if (restaurantesResponse.ok) {
             const restaurantes = await restaurantesResponse.json();
             const restaurante = restaurantes.find(r => r.iD_Usuario === userId);
@@ -60,7 +60,7 @@ const Sesion = ({ setIsLoggedIn, setUsuarioCompleto }) => {
             if (restaurante) {
                 localStorage.setItem('restauranteId', restaurante.iD_Restaurante);
                 setUsuarioCompleto(true);
-                navigate('/Administrador'); 
+                navigate('/Administrador');
                 window.location.reload();
                 return;
             }
@@ -69,8 +69,8 @@ const Sesion = ({ setIsLoggedIn, setUsuarioCompleto }) => {
             return;
         }
 
-  
-        const clientesResponse = await fetch('https://localhost:7263/api/Clientes/Listar');
+
+        const clientesResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Clientes/Listar');
         if (clientesResponse.ok) {
             const clientes = await clientesResponse.json();
             const cliente = clientes.find(c => c.iD_Usuario === userId);
@@ -78,7 +78,7 @@ const Sesion = ({ setIsLoggedIn, setUsuarioCompleto }) => {
             if (cliente) {
                 localStorage.setItem('clienteId', cliente.iD_Cliente);
                 setUsuarioCompleto(true);
-                navigate('/'); 
+                navigate('/');
                 window.location.reload();
                 return;
             }
@@ -87,7 +87,7 @@ const Sesion = ({ setIsLoggedIn, setUsuarioCompleto }) => {
             return;
         }
 
-        
+
         localStorage.removeItem('clienteId');
         localStorage.removeItem('restauranteId');
         navigate('/Cliente');

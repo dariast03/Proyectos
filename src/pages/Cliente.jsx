@@ -28,7 +28,7 @@ const Cliente = ({ setUsuarioCompleto }) => {
       return;
     }
 
-    const response = await fetch('https://localhost:7263/api/Clientes/Insertar', {
+    const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Clientes/Insertar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ const Cliente = ({ setUsuarioCompleto }) => {
       const data = await response.json();
       localStorage.setItem('clienteId', data.ID_Cliente); // Guardar el ID del cliente en el localStorage
       alert('Perfil completado exitosamente');
-      navigate('/'); 
+      navigate('/');
     } else {
       const errorData = await response.json();
       alert(`Error al completar el perfil: ${errorData.errors?.cliente || 'Error desconocido'}`);

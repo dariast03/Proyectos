@@ -10,7 +10,7 @@ const Inicio = ({ isLoggedIn, handleAddToCart }) => {
 
     const fetchCliente = async () => {
       try {
-        const response = await fetch('https://localhost:7263/api/Clientes/Listar');
+        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Clientes/Listar');
         const clientes = await response.json();
         const clienteEncontrado = clientes.find(c => c.iD_Usuario === parseInt(usuarioId, 10));
         if (clienteEncontrado) {
@@ -30,7 +30,7 @@ const Inicio = ({ isLoggedIn, handleAddToCart }) => {
 
     const fetchPlatos = async () => {
       try {
-        const response = await fetch('https://localhost:7263/api/Platos/Listar');
+        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Platos/Listar');
         const data = await response.json();
         setPlatos(data);
       } catch (error) {
@@ -58,70 +58,70 @@ const Inicio = ({ isLoggedIn, handleAddToCart }) => {
           </section>
 
           <section
-  className="home-menu-dia"
-  style={{
-    padding: "20px",
-    textAlign: "center"
-  }}
->
-  <h2>Menú del Día</h2>
-  <div
-    className="home-scrollable-dishes"
-    style={{
-      display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "center",
-      gap: "20px",
-      marginTop: "20px"
-    }}
-  >
-    {platos.map(plato => (
-      <div
-        key={plato.iD_Plato}
-        className="home-dish-card"
-        style={{
-          width: "200px",
-          padding: "15px",
-          borderRadius: "10px",
-          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-          textAlign: "center",
-          backgroundColor: "#fff"
-        }}
-      >
-        <img
-          src={plato.imagenUrl}
-          alt={plato.nombre_Plato}
-          style={{
-            width: "100%",
-            height: "150px",
-            objectFit: "cover",
-            borderRadius: "8px"
-          }}
-        />
-        <h3 style={{ fontSize: "1.2em", margin: "10px 0" }}>{plato.nombre_Plato}</h3>
-        <p style={{ fontSize: "0.9em", color: "#555" }}>{plato.descripcion}</p>
-        <p className="home-price" style={{ fontWeight: "bold", marginTop: "10px" }}>
-          Precio: {plato.precio_Referencia} Bs
-        </p>
-        <button
-          className="home-add-cart-button"
-          style={{
-            marginTop: "10px",
-            padding: "8px 16px",
-            backgroundColor: "#ff6f61",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer"
-          }}
-          onClick={() => handleAddToCart(plato)}
-        >
-          Añadir al carrito
-        </button>
-      </div>
-    ))}
-  </div>
-</section>
+            className="home-menu-dia"
+            style={{
+              padding: "20px",
+              textAlign: "center"
+            }}
+          >
+            <h2>Menú del Día</h2>
+            <div
+              className="home-scrollable-dishes"
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: "20px",
+                marginTop: "20px"
+              }}
+            >
+              {platos.map(plato => (
+                <div
+                  key={plato.iD_Plato}
+                  className="home-dish-card"
+                  style={{
+                    width: "200px",
+                    padding: "15px",
+                    borderRadius: "10px",
+                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                    textAlign: "center",
+                    backgroundColor: "#fff"
+                  }}
+                >
+                  <img
+                    src={plato.imagenUrl}
+                    alt={plato.nombre_Plato}
+                    style={{
+                      width: "100%",
+                      height: "150px",
+                      objectFit: "cover",
+                      borderRadius: "8px"
+                    }}
+                  />
+                  <h3 style={{ fontSize: "1.2em", margin: "10px 0" }}>{plato.nombre_Plato}</h3>
+                  <p style={{ fontSize: "0.9em", color: "#555" }}>{plato.descripcion}</p>
+                  <p className="home-price" style={{ fontWeight: "bold", marginTop: "10px" }}>
+                    Precio: {plato.precio_Referencia} Bs
+                  </p>
+                  <button
+                    className="home-add-cart-button"
+                    style={{
+                      marginTop: "10px",
+                      padding: "8px 16px",
+                      backgroundColor: "#ff6f61",
+                      color: "#fff",
+                      border: "none",
+                      borderRadius: "5px",
+                      cursor: "pointer"
+                    }}
+                    onClick={() => handleAddToCart(plato)}
+                  >
+                    Añadir al carrito
+                  </button>
+                </div>
+              ))}
+            </div>
+          </section>
 
         </>
       ) : (

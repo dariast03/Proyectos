@@ -22,7 +22,7 @@ const EscribirResena = () => {
     };
 
     try {
-      const response = await fetch('https://localhost:7263/api/Reseñas/Insertar', {
+      const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Reseñas/Insertar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(resena),

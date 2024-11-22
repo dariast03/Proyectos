@@ -14,7 +14,7 @@ const Promociones = ({ setIsLoggedIn }) => {
   useEffect(() => {
     const fetchPromociones = async () => {
       try {
-        const response = await fetch('https://localhost:7263/api/Promociones/Listar');
+        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Promociones/Listar');
         const data = await response.json();
         setPromociones(data);
       } catch (error) {
@@ -44,7 +44,7 @@ const Promociones = ({ setIsLoggedIn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://localhost:7263/api/Promociones/Insertar', {
+      const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Promociones/Insertar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ const Promociones = ({ setIsLoggedIn }) => {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://localhost:7263/api/Promociones/Actualizar/${editingPromocion.iD_Promocion}`, {
+      const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Promociones/Actualizar/${editingPromocion.iD_Promocion}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -14,7 +14,7 @@ const NotificacionAdmin = () => {
 
     const fetchMenus = async () => {
       try {
-        const response = await fetch('https://localhost:7263/api/Menus/Listar');
+        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Menus/Listar');
         const data = await response.json();
         const platosRestaurante = data.filter(menu => menu.iD_Restaurante === parseInt(restauranteId, 10)).map(menu => menu.iD_Plato);
         setPlatos(platosRestaurante);
@@ -30,7 +30,7 @@ const NotificacionAdmin = () => {
     if (platos.length > 0) {
       const fetchPedidos = async () => {
         try {
-          const response = await fetch('https://localhost:7263/api/PedidoClientes/Listar');
+          const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/PedidoClientes/Listar');
           const data = await response.json();
           const pedidosRestaurante = data.filter(pedido => platos.includes(pedido.iD_Plato));
           setPedidos(pedidosRestaurante);
@@ -46,7 +46,7 @@ const NotificacionAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://localhost:7263/api/Notificaciones/Insertar', {
+      const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Notificaciones/Insertar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

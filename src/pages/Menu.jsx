@@ -10,7 +10,7 @@ const Menu = ({ isLoggedIn, handleAddToCart }) => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const response = await fetch('https://localhost:7263/api/Menus/Listar');
+        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Menus/Listar');
         const data = await response.json();
         setMenus(data);
       } catch (error) {
@@ -46,7 +46,7 @@ const Menu = ({ isLoggedIn, handleAddToCart }) => {
 
   const filteredMenus = menus.filter(menu => {
     const matchesSearchTerm = menu.palto.nombre_Plato.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                              menu.restaurante.nombre_Restaurante.toLowerCase().includes(searchTerm.toLowerCase());
+      menu.restaurante.nombre_Restaurante.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesPriceRange = menu.palto.precio_Referencia >= priceRange[0] && menu.palto.precio_Referencia <= priceRange[1];
     return matchesSearchTerm && matchesPriceRange;
   });

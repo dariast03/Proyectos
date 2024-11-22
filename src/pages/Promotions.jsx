@@ -17,7 +17,7 @@ const Promotions = ({ handleAddToCart }) => {
 
     const fetchPlatos = async () => {
       try {
-        const response = await fetch('https://localhost:7263/api/Platos/Listar');
+        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Platos/Listar');
         const data = await response.json();
         setPlatos(data);
       } catch (error) {
@@ -27,7 +27,7 @@ const Promotions = ({ handleAddToCart }) => {
 
     const fetchPromociones = async () => {
       try {
-        const response = await fetch('https://localhost:7263/api/Promociones/Listar');
+        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Promociones/Listar');
         const data = await response.json();
         setPromociones(data.filter(promo => promo.descripcion_Promocion !== "null"));
       } catch (error) {
@@ -77,9 +77,9 @@ const Promotions = ({ handleAddToCart }) => {
 
   const filteredPromociones = promociones.filter(promo => {
     const platosEnPromocion = platos.filter(plato => plato.iD_Promocion === promo.iD_Promocion);
-    return platosEnPromocion.some(plato => 
+    return platosEnPromocion.some(plato =>
       plato.nombre_Plato.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      plato.precio_Referencia >= priceRange[0] && 
+      plato.precio_Referencia >= priceRange[0] &&
       plato.precio_Referencia <= priceRange[1]
     );
   });

@@ -13,7 +13,7 @@ const Notificaciones = () => {
 
     const fetchPagos = async () => {
       try {
-        const response = await fetch('https://localhost:7263/api/Pagos/Listar');
+        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Pagos/Listar');
         const data = await response.json();
         const pagosCliente = data.filter(pago => pago.iD_Cliente === parseInt(clienteId, 10));
         const pagosIds = pagosCliente.map(pago => pago.iD_Pago);
@@ -30,7 +30,7 @@ const Notificaciones = () => {
     if (pagosIds.length > 0) {
       const fetchNotificaciones = async () => {
         try {
-          const response = await fetch('https://localhost:7263/api/Notificaciones/Listar');
+          const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Notificaciones/Listar');
           const data = await response.json();
           const notificacionesFiltradas = data.filter(notificacion => pagosIds.includes(notificacion.pedido.iD_Pago));
           setNotificaciones(notificacionesFiltradas);
@@ -46,7 +46,7 @@ const Notificaciones = () => {
   const handleMarcarComoLeida = async (id) => {
     try {
       const notificacion = notificaciones.find(n => n.iD_Notificacion === id);
-      const response = await fetch(`https://localhost:7263/api/Notificaciones/Actualizar/${id}`, {
+      const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Notificaciones/Actualizar/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const Notificaciones = () => {
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
-      setNotificaciones(notificaciones.map(notificacion => 
+      setNotificaciones(notificaciones.map(notificacion =>
         notificacion.iD_Notificacion === id ? { ...notificacion, leido: 1 } : notificacion
       ));
       window.location.reload(); // Recargar la página para actualizar el contador
@@ -71,7 +71,7 @@ const Notificaciones = () => {
   const handleMarcarComoNoLeida = async (id) => {
     try {
       const notificacion = notificaciones.find(n => n.iD_Notificacion === id);
-      const response = await fetch(`https://localhost:7263/api/Notificaciones/Actualizar/${id}`, {
+      const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Notificaciones/Actualizar/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ const Notificaciones = () => {
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
-      setNotificaciones(notificaciones.map(notificacion => 
+      setNotificaciones(notificaciones.map(notificacion =>
         notificacion.iD_Notificacion === id ? { ...notificacion, leido: 0 } : notificacion
       ));
       window.location.reload(); // Recargar la página para actualizar el contador

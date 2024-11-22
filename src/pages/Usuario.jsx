@@ -9,7 +9,7 @@ const CreateUser = ({ setIsLoggedIn, setUsuarioCompleto }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('https://localhost:7263/api/Usuarios/Insertar', {
+    const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Insertar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,20 +23,20 @@ const CreateUser = ({ setIsLoggedIn, setUsuarioCompleto }) => {
         fecha_Registro: new Date().toISOString().split('T')[0],
       }),
     });
-    
+
     if (response.ok) {
-     
-      const usuariosResponse = await fetch('https://localhost:7263/api/Usuarios/Listar');
+
+      const usuariosResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Listar');
       if (usuariosResponse.ok) {
         const usuarios = await usuariosResponse.json();
-  
-        const usuario = usuarios.find(u => 
-          u.nombre_Usuario === nombreUsuario && 
-          u.email === email && 
+
+        const usuario = usuarios.find(u =>
+          u.nombre_Usuario === nombreUsuario &&
+          u.email === email &&
           u.contrasena === contrasena
         );
         if (usuario) {
-    
+
           localStorage.setItem('usuarioId', usuario.iD_Usuario);
           setIsLoggedIn(true);
           checkCompletarPerfil(usuario.iD_Usuario);
@@ -58,18 +58,18 @@ const CreateUser = ({ setIsLoggedIn, setUsuarioCompleto }) => {
       return;
     }
 
-    const clientesResponse = await fetch('https://localhost:7263/api/Clientes/Listar');
+    const clientesResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Clientes/Listar');
     if (clientesResponse.ok) {
       const clientes = await clientesResponse.json();
-   
+
       const cliente = clientes.find(c => c.iD_Usuario === userId);
       if (cliente) {
-      
+
         localStorage.setItem('clienteId', cliente.iD_Cliente);
         setUsuarioCompleto(true);
         navigate('/');
       } else {
-        const response = await fetch(`https://localhost:7263/api/Usuarios/Buscar/${userId}`);
+        const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Buscar/${userId}`);
         if (response.ok) {
           const cliente = await response.json();
           if (!cliente) {

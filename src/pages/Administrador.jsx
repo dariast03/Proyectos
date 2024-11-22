@@ -10,7 +10,7 @@ const Administrador = ({ setIsLoggedIn }) => {
     if (usuarioId) {
       const fetchRestaurante = async () => {
         try {
-          const response = await fetch('https://localhost:7263/api/Restaurantes/Listar');
+          const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Restaurantes/Listar');
           const data = await response.json();
           const restaurante = data.find(r => r.iD_Usuario === parseInt(usuarioId, 10));
           setRestaurante(restaurante);
@@ -57,18 +57,18 @@ const Administrador = ({ setIsLoggedIn }) => {
             </Link>
           </div>
           <div className="admin-option">
-  <Link 
-    to="/Administrador" 
-    onClick={() => {
-      localStorage.clear(); 
-      window.location.reload(); 
-    }}
-  >
-    <h3 style={{ color: 'red' }}>Cerrar Sesión</h3>
-  </Link>
-</div>
+            <Link
+              to="/Administrador"
+              onClick={() => {
+                localStorage.clear();
+                window.location.reload();
+              }}
+            >
+              <h3 style={{ color: 'red' }}>Cerrar Sesión</h3>
+            </Link>
+          </div>
 
-          
+
         </div>
         {restaurante && (
           <div className="admin-profile">

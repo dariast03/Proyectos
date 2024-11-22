@@ -13,28 +13,28 @@ const Pedidos = ({ setIsLoggedIn }) => {
 
     const fetchData = async () => {
       try {
-       
-        const menusResponse = await fetch('https://localhost:7263/api/Menus/Listar');
+
+        const menusResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Menus/Listar');
         const menusData = await menusResponse.json();
         const filteredMenus = menusData.filter(menu => menu.iD_Restaurante === parseInt(id, 10));
         setMenus(filteredMenus);
 
-       
-        const platosResponse = await fetch('https://localhost:7263/api/Platos/Listar');
+
+        const platosResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Platos/Listar');
         const platosData = await platosResponse.json();
         const menuPlatoIds = filteredMenus.map(menu => menu.iD_Plato);
         const filteredPlatos = platosData.filter(plato => menuPlatoIds.includes(plato.iD_Plato));
         setPlatos(filteredPlatos);
 
-  
-        const detallePedidosResponse = await fetch('https://localhost:7263/api/PedidoClientes/Listar');
+
+        const detallePedidosResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/PedidoClientes/Listar');
         const detallePedidosData = await detallePedidosResponse.json();
         const platoIds = filteredPlatos.map(plato => plato.iD_Plato);
         const filteredDetallePedidos = detallePedidosData.filter(detalle => platoIds.includes(detalle.iD_Plato));
         setDetallePedidos(filteredDetallePedidos);
 
-    
-        const pedidosResponse = await fetch('https://localhost:7263/api/Pedidos/Listar');
+
+        const pedidosResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Pedidos/Listar');
         const pedidosData = await pedidosResponse.json();
         const pedidoIds = filteredDetallePedidos.map(detalle => detalle.iD_Pedido);
         const filteredPedidos = pedidosData.filter(pedido => pedidoIds.includes(pedido.iD_Pedido));
@@ -57,7 +57,7 @@ const Pedidos = ({ setIsLoggedIn }) => {
     };
 
     try {
-      const response = await fetch(`https://localhost:7263/api/Pedidos/Actualizar/${pedido.iD_Pedido}`, {
+      const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Pedidos/Actualizar/${pedido.iD_Pedido}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const Pedidos = ({ setIsLoggedIn }) => {
             <li key={pedido.iD_Pedido}>
               <p>Fecha: {new Date(pedido.fecha_Pedido).toLocaleDateString()}</p>
               <p>Total: ${pedido.total_Pedido}</p>
-              <p>Estado: 
+              <p>Estado:
                 <select value={pedido.estado_Pedido} onChange={(e) => handleEstadoChange(e, pedido)}>
                   <option value="preparacion">Preparación</option>
                   <option value="enviado">Enviado</option>
