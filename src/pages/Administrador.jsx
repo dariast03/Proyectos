@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Administrador.css';
 
-const HomeAdministrador = ({ setIsLoggedIn }) => {
+const Administrador = ({ setIsLoggedIn }) => {
   const [restaurante, setRestaurante] = useState(null);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const HomeAdministrador = ({ setIsLoggedIn }) => {
   }, []);
 
   return (
-    <div className="home-administrador">
+    <div className="Administrador">
       <section className="admin-banner">
         <h1>¡Bienvenido al panel de administración!</h1>
       </section>
@@ -32,7 +32,7 @@ const HomeAdministrador = ({ setIsLoggedIn }) => {
       <section className="admin-body">
         <div className="admin-options">
           <div className="admin-option">
-            <Link to="/menu-y-platos">
+            <Link to="/MenuAdmin">
               <h3>Menú y Platos</h3>
             </Link>
           </div>
@@ -42,7 +42,7 @@ const HomeAdministrador = ({ setIsLoggedIn }) => {
             </Link>
           </div>
           <div className="admin-option">
-            <Link to="/editar-perfil-admin">
+            <Link to="/Editar-admin">
               <h3>Editar Perfil</h3>
             </Link>
           </div>
@@ -51,6 +51,24 @@ const HomeAdministrador = ({ setIsLoggedIn }) => {
               <h3>Promociones</h3>
             </Link>
           </div>
+          <div className="admin-option">
+            <Link to="/notificacion-admin">
+              <h3>Notifcicaciones</h3>
+            </Link>
+          </div>
+          <div className="admin-option">
+  <Link 
+    to="/Administrador" 
+    onClick={() => {
+      localStorage.clear(); 
+      window.location.reload(); 
+    }}
+  >
+    <h3 style={{ color: 'red' }}>Cerrar Sesión</h3>
+  </Link>
+</div>
+
+          
         </div>
         {restaurante && (
           <div className="admin-profile">
@@ -71,4 +89,4 @@ const HomeAdministrador = ({ setIsLoggedIn }) => {
   );
 };
 
-export default HomeAdministrador;
+export default Administrador;

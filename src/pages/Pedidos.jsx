@@ -13,27 +13,27 @@ const Pedidos = ({ setIsLoggedIn }) => {
 
     const fetchData = async () => {
       try {
-        // Fetch menus
+       
         const menusResponse = await fetch('https://localhost:7263/api/Menus/Listar');
         const menusData = await menusResponse.json();
         const filteredMenus = menusData.filter(menu => menu.iD_Restaurante === parseInt(id, 10));
         setMenus(filteredMenus);
 
-        // Fetch platos
+       
         const platosResponse = await fetch('https://localhost:7263/api/Platos/Listar');
         const platosData = await platosResponse.json();
         const menuPlatoIds = filteredMenus.map(menu => menu.iD_Plato);
         const filteredPlatos = platosData.filter(plato => menuPlatoIds.includes(plato.iD_Plato));
         setPlatos(filteredPlatos);
 
-        // Fetch detalle pedidos
+  
         const detallePedidosResponse = await fetch('https://localhost:7263/api/PedidoClientes/Listar');
         const detallePedidosData = await detallePedidosResponse.json();
         const platoIds = filteredPlatos.map(plato => plato.iD_Plato);
         const filteredDetallePedidos = detallePedidosData.filter(detalle => platoIds.includes(detalle.iD_Plato));
         setDetallePedidos(filteredDetallePedidos);
 
-        // Fetch pedidos
+    
         const pedidosResponse = await fetch('https://localhost:7263/api/Pedidos/Listar');
         const pedidosData = await pedidosResponse.json();
         const pedidoIds = filteredDetallePedidos.map(detalle => detalle.iD_Pedido);

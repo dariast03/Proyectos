@@ -5,6 +5,10 @@ const Promotions = ({ handleAddToCart }) => {
   const [platos, setPlatos] = useState([]);
   const [promociones, setPromociones] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [priceRange, setPriceRange] = useState([0, 100]);
+  const [showPriceFilter, setShowPriceFilter] = useState(false);
+  const [sortOption, setSortOption] = useState('');
 
   useEffect(() => {
     const usuarioId = localStorage.getItem('usuarioId');
@@ -55,6 +59,40 @@ const Promotions = ({ handleAddToCart }) => {
     return (price - (price * discount / 100)).toFixed(2);
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handlePriceChange = (e) => {
+    setPriceRange([0, e.target.value]);
+  };
+
+  const togglePriceFilter = () => {
+    setShowPriceFilter(!showPriceFilter);
+  };
+
+  const handleSortChange = (e) => {
+    setSortOption(e.target.value);
+  };
+
+  const filteredPromociones = promociones.filter(promo => {
+    const platosEnPromocion = platos.filter(plato => plato.iD_Promocion === promo.iD_Promocion);
+    return platosEnPromocion.some(plato => 
+      plato.nombre_Plato.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      plato.precio_Referencia >= priceRange[0] && 
+      plato.precio_Referencia <= priceRange[1]
+    );
+  });
+
+  const sortedPromociones = filteredPromociones.sort((a, b) => {
+    if (sortOption === 'fecha') {
+      return new Date(a.fecha_Fin) - new Date(b.fecha_Fin);
+    } else if (sortOption === 'descuento') {
+      return b.descuento - a.descuento;
+    }
+    return 0;
+  });
+
   return (
     <div className="promotions-page">
       <section className="banner">
@@ -62,8 +100,43 @@ const Promotions = ({ handleAddToCart }) => {
         <p>¡Aprovecha nuestras ofertas antes de que se acaben!</p>
       </section>
 
+      <section className="search-section">
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Buscar por nombre de plato..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="search-input"
+          />
+          <span className="search-icon">🔍</span>
+          <button className="filter-button" onClick={togglePriceFilter}>⚙️ Filtro de precios</button>
+        </div>
+        {showPriceFilter && (
+          <div className="price-filter">
+            <label>Rango de precios: 0 - {priceRange[1]} Bs</label>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={priceRange[1]}
+              onChange={handlePriceChange}
+              className="price-range"
+            />
+          </div>
+        )}
+        <div className="sort-options">
+          <label>Ordenar por:</label>
+          <select value={sortOption} onChange={handleSortChange}>
+            <option value="">Seleccionar</option>
+            <option value="fecha">Próximas a terminar</option>
+            <option value="descuento">Mayor % de descuento</option>
+          </select>
+        </div>
+      </section>
+
       <div className="promotions">
-        {promociones.map((promo) => {
+        {sortedPromociones.map((promo) => {
           const platosEnPromocion = platos.filter(plato => plato.iD_Promocion === promo.iD_Promocion);
           if (platosEnPromocion.length === 0) return null;
 
@@ -84,7 +157,11 @@ const Promotions = ({ handleAddToCart }) => {
                     <p>Precio Original: {plato.precio_Referencia} Bs</p>
                     <p>Precio con Descuento: {getDiscountedPrice(plato.precio_Referencia, promo.descuento)} Bs</p>
                     {isLoggedIn && (
-                      <button onClick={() => handleAddToCart(plato, true)}>Añadir al carrito</button>
+                      <button onClick={() => handleAddToCart({
+                        ...plato,
+                        isPromotion: true,
+                        precioConDescuento: getDiscountedPrice(plato.precio_Referencia, promo.descuento)
+                      })}>Añadir al carrito</button>
                     )}
                   </div>
                 ))}

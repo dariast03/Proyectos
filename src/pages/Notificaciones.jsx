@@ -45,16 +45,24 @@ const Notificaciones = () => {
 
   const handleMarcarComoLeida = async (id) => {
     try {
-      await fetch(`https://localhost:7263/api/Notificaciones/Actualizar/${id}`, {
+      const notificacion = notificaciones.find(n => n.iD_Notificacion === id);
+      const response = await fetch(`https://localhost:7263/api/Notificaciones/Actualizar/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ leido: 1 }),
+        body: JSON.stringify({
+          ...notificacion,
+          leido: 1
+        }),
       });
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
       setNotificaciones(notificaciones.map(notificacion => 
         notificacion.iD_Notificacion === id ? { ...notificacion, leido: 1 } : notificacion
       ));
+      window.location.reload(); // Recargar la página para actualizar el contador
     } catch (error) {
       console.error('Error al actualizar la notificación:', error);
     }
@@ -62,16 +70,24 @@ const Notificaciones = () => {
 
   const handleMarcarComoNoLeida = async (id) => {
     try {
-      await fetch(`https://localhost:7263/api/Notificaciones/Actualizar/${id}`, {
+      const notificacion = notificaciones.find(n => n.iD_Notificacion === id);
+      const response = await fetch(`https://localhost:7263/api/Notificaciones/Actualizar/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ leido: 0 }),
+        body: JSON.stringify({
+          ...notificacion,
+          leido: 0
+        }),
       });
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
       setNotificaciones(notificaciones.map(notificacion => 
         notificacion.iD_Notificacion === id ? { ...notificacion, leido: 0 } : notificacion
       ));
+      window.location.reload(); // Recargar la página para actualizar el contador
     } catch (error) {
       console.error('Error al actualizar la notificación:', error);
     }

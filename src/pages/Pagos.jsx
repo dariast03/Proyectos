@@ -12,7 +12,7 @@ const Pagos = ({ total }) => {
   const handlePago = () => {
     const clienteId = localStorage.getItem('clienteId');
     const descripcionPago = tipoPago === 'Efectivo' ? 'Efectivo' : `Tarjeta: ${numeroTarjeta}, Exp: ${fechaExpiracion}, CVV: ${cvv}`;
-    navigate('/procesando-pago', { state: { total, tipoPago, descripcionPago, clienteId } });
+    navigate('/Procesando', { state: { total, tipoPago, descripcionPago, clienteId } });
   };
 
   return (

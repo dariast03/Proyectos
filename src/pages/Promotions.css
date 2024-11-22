@@ -1,146 +1,225 @@
 /* Promotions.css */
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.promotions-page {
+  padding: 20px;
+}
+
+.banner {
+  text-align: center;
+  background: #ff6f61;
+  color: white;
+  padding: 50px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.banner h1 {
+  font-size: 2.5em;
+  margin: 0;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.banner p {
+  font-size: 1.2em;
+  margin: 10px 0 0;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.promotions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.promo-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1 1 calc(33.333% - 40px); /* Tres tarjetas por fila con espacio entre ellas */
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.promo-card:hover {
+  transform: scale(1.05);
+}
+
+.promo-card h2, .promo-card p {
+  color: #ff0000; /* Cambia el color del texto a rojo */
+  margin: 5px 0;
+}
+
+.time-left {
+  font-weight: bold;
+  color: #333;
+}
+
+.promo-dishes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.dish {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  min-width: 200px;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dish:hover {
+  transform: scale(1.05);
+}
+
+.dish img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 150px; 
+  object-fit: cover; 
+  border-radius: 10px;
+}
+
+.dish h3 {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.dish p {
+  color: #666;
+  text-align: center;
+}
+
+.dish button {
+  background: #ff6f61;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+}
+
+.dish button:hover {
+  background: #e65c50;
+  transform: scale(1.05);
+}
+
+.search-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  position: relative;
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 20px; /* Espacio para el icono */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  color: #ccc;
+}
+
+.filter-button {
+  background: #ff6f61;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background 0.3s ease;
+}
+
+.filter-button:hover {
+  background: #e65c50;
+}
+
+.price-filter {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.price-filter label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1em;
+  color: #333;
+}
+
+.price-range {
+  width: 100%;
+}
+
+.sort-options {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.sort-options label {
+  margin-right: 10px;
+  font-size: 1em;
+  color: #333;
+}
+
+.sort-options select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .promotions-page {
-    padding: 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .banner {
-    text-align: center;
-    background: #ff6f61;
-    color: white;
-    padding: 50px 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .banner h1 {
-    font-size: 2.5em;
-    margin: 0;
-    animation: fadeInDown 1s ease-in-out;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .banner p {
-    font-size: 1.2em;
-    margin: 10px 0 0;
-    animation: fadeInUp 1s ease-in-out;
-  }
-  
-  .promotions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .promo-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    flex: 1 1 calc(33.333% - 40px); /* Tres tarjetas por fila con espacio entre ellas */
-    transition: transform 0.3s ease;
-    text-align: center;
-  }
-  
-  .promo-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .promo-card h2, .promo-card p {
-    color: #ff0000; /* Cambia el color del texto a rojo */
-    margin: 5px 0;
-  }
-  
-  .time-left {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .promo-dishes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .dish {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    min-width: 200px;
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .dish:hover {
-    transform: scale(1.05);
-  }
-  
-  .dish img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 150px; /* Altura máxima para todas las imágenes */
-    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
-    border-radius: 10px;
-  }
-  
-  .dish h3 {
-    font-size: 1.5em;
-    margin: 10px 0;
-  }
-  
-  .dish p {
-    color: #666;
-    text-align: center;
-  }
-  
-  .dish button {
-    background: #ff6f61;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-    margin-top: 10px;
-  }
-  
-  .dish button:hover {
-    background: #e65c50;
-    transform: scale(1.05);
-  }
-  
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}

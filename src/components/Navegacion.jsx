@@ -7,7 +7,9 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, carrito }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [imagenPerfilUrl, setImagenPerfilUrl] = useState('');
   const [notificaciones, setNotificaciones] = useState([]);
+  const [pagosIds, setPagosIds] = useState([]);
   const [clienteId, setClienteId] = useState(null);
+  const [notificacionesNoLeidas, setNotificacionesNoLeidas] = useState(0);
 
   useEffect(() => {
     const usuarioId = localStorage.getItem('usuarioId');
@@ -23,23 +25,41 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, carrito }) => {
         .catch(error => console.error('Error al cargar la imagen de perfil:', error));
     }
 
-    const fetchNotificaciones = async () => {
+    const fetchPagos = async () => {
       try {
-        const response = await fetch('https://localhost:7263/api/Notificaciones/Listar');
+        const response = await fetch('https://localhost:7263/api/Pagos/Listar');
         const data = await response.json();
-        const notificacionesFiltradas = data.filter(notificacion => 
-          notificacion.pedido && notificacion.pedido.pago && notificacion.pedido.pago.iD_Cliente === parseInt(storedClienteId, 10)
-        );
-        setNotificaciones(notificacionesFiltradas);
+        const pagosCliente = data.filter(pago => pago.iD_Cliente === parseInt(storedClienteId, 10));
+        const pagosIds = pagosCliente.map(pago => pago.iD_Pago);
+        setPagosIds(pagosIds);
       } catch (error) {
-        console.error('Error al cargar las notificaciones:', error);
+        console.error('Error al cargar los pagos:', error);
       }
     };
 
     if (storedClienteId) {
-      fetchNotificaciones();
+      fetchPagos();
     }
   }, []);
+
+  useEffect(() => {
+    if (pagosIds.length > 0) {
+      const fetchNotificaciones = async () => {
+        try {
+          const response = await fetch('https://localhost:7263/api/Notificaciones/Listar');
+          const data = await response.json();
+          const notificacionesFiltradas = data.filter(notificacion => pagosIds.includes(notificacion.pedido.iD_Pago));
+          setNotificaciones(notificacionesFiltradas);
+          const noLeidas = notificacionesFiltradas.filter(notificacion => notificacion.leido === 0).length;
+          setNotificacionesNoLeidas(noLeidas);
+        } catch (error) {
+          console.error('Error al cargar las notificaciones:', error);
+        }
+      };
+
+      fetchNotificaciones();
+    }
+  }, [pagosIds]);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -63,7 +83,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, carrito }) => {
             <Link to="/notificaciones" className="navbar-link">
               <div className="navbar-notifications-icon">
                 🔔
-                {notificaciones.length > 0 && <span className="navbar-notifications-count">{notificaciones.length}</span>}
+                {notificacionesNoLeidas > 0 && <span className="navbar-notifications-count">{notificacionesNoLeidas}</span>}
               </div>
             </Link>
             <Link to="/carrito" className="navbar-link">

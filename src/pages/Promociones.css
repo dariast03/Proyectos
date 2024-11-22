@@ -34,7 +34,7 @@ body {
     padding: 20px;
     margin-bottom: 20px;
     transition: transform 0.3s ease;
-    text-align: center; /* Centra el texto dentro de la tarjeta */
+    text-align: center; 
   }
   
   .promociones-item:hover {
@@ -42,7 +42,7 @@ body {
   }
   
   .promociones-description, .promociones-date {
-    color: #000000; /* Cambia el color del texto a rojo */
+    color: #000000;
     margin: 5px 0;
   }
   

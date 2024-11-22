@@ -38,10 +38,10 @@ const ProfileMenu = ({ isLoggedIn, setIsLoggedIn }) => {
               <img src={imagenPerfilUrl} alt="Perfil" />
             </div>
           )}
-          <Link to="/editar-perfil">
+          <Link to="/Editar">
             <button>Editar Perfil</button>
           </Link>
-          <Link to="/ver-pedidos">
+          <Link to="/Listar">
             <button>Ver Pedidos</button>
           </Link>
           <Link to="/escribir-resena">
@@ -51,10 +51,10 @@ const ProfileMenu = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
       ) : (
         <div>
-          <Link to="/login">
+          <Link to="/Sesion">
             <button>Iniciar Sesión</button>
           </Link>
-          <Link to="/register">
+          <Link to="/Registro">
             <button>Registrarse</button>
           </Link>
         </div>

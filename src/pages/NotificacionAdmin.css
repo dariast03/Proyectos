@@ -1,0 +1,40 @@
+.notificacion-admin-page {
+    padding: 20px;
+  }
+  
+  .notificacion-admin-page h1 {
+    margin-bottom: 20px;
+  }
+  
+  .notificacion-admin-page form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .notificacion-admin-page form div {
+    margin-bottom: 10px;
+  }
+  
+  .notificacion-admin-page form label {
+    margin-bottom: 5px;
+  }
+  
+  .notificacion-admin-page form input,
+  .notificacion-admin-page form select {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .notificacion-admin-page form button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .notificacion-admin-page form button:hover {
+    background-color: #ff6f61;
+  }
+  
