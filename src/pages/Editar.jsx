@@ -24,7 +24,7 @@ const Editar = () => {
     const clienteId = localStorage.getItem('clienteId');
 
     if (usuarioId) {
-      fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Buscar/${usuarioId}`)
+      fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Usuarios/Buscar/${usuarioId}`)
         .then(response => response.json())
         .then(data => {
           setUsuario(data);
@@ -39,7 +39,7 @@ const Editar = () => {
     }
 
     if (clienteId) {
-      fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Clientes/Buscar/${clienteId}`)
+      fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Clientes/Buscar/${clienteId}`)
         .then(response => response.json())
         .then(data => {
           setCliente(data);
@@ -66,7 +66,7 @@ const Editar = () => {
       formData.append('file', imagenPerfil);
       formData.append('fileName', imagenPerfil.name);
 
-      const uploadResponse = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/SubirImagen?fileName=${imagenPerfil.name}`, {
+      const uploadResponse = await fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Usuarios/SubirImagen?fileName=${imagenPerfil.name}`, {
         method: 'POST',
         body: formData,
       });
@@ -79,7 +79,7 @@ const Editar = () => {
       }
     }
 
-    const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Actualizar/${usuarioId}`, {
+    const response = await fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Usuarios/Actualizar/${usuarioId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ const Editar = () => {
     e.preventDefault();
     const clienteId = localStorage.getItem('clienteId');
     const usuarioId = localStorage.getItem('usuarioId');
-    const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Clientes/Actualizar/${clienteId}`, {
+    const response = await fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Clientes/Actualizar/${clienteId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

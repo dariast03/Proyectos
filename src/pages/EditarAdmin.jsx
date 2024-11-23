@@ -26,7 +26,7 @@ const EditarAdmin = ({ setIsLoggedIn }) => {
     const restauranteId = localStorage.getItem('restauranteId');
 
     if (modo === 'usuario' && usuarioId) {
-      fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Buscar/${usuarioId}`)
+      fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Usuarios/Buscar/${usuarioId}`)
         .then(response => response.json())
         .then(data => {
           setUsuario(data);
@@ -39,7 +39,7 @@ const EditarAdmin = ({ setIsLoggedIn }) => {
         })
         .catch(error => console.error('Error al cargar el usuario:', error));
     } else if (modo === 'restaurante' && restauranteId) {
-      fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Restaurantes/Buscar/${restauranteId}`)
+      fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Restaurantes/Buscar/${restauranteId}`)
         .then(response => response.json())
         .then(data => {
           setRestaurante(data);
@@ -69,7 +69,7 @@ const EditarAdmin = ({ setIsLoggedIn }) => {
       formData.append('file', imagenPerfil);
       formData.append('fileName', imagenPerfil.name);
 
-      const uploadResponse = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/SubirImagen?fileName=${imagenPerfil.name}`, {
+      const uploadResponse = await fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Usuarios/SubirImagen?fileName=${imagenPerfil.name}`, {
         method: 'POST',
         body: formData,
       });
@@ -82,7 +82,7 @@ const EditarAdmin = ({ setIsLoggedIn }) => {
       }
     }
 
-    const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Actualizar/${usuarioId}`, {
+    const response = await fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Usuarios/Actualizar/${usuarioId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ const EditarAdmin = ({ setIsLoggedIn }) => {
     const restauranteId = localStorage.getItem('restauranteId');
     const usuarioId = localStorage.getItem('usuarioId');
 
-    const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Restaurantes/Actualizar/${restauranteId}`, {
+    const response = await fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Restaurantes/Actualizar/${restauranteId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

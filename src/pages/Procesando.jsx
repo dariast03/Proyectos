@@ -14,7 +14,7 @@ const Procesando = () => {
       setIsProcessing(true);
 
       try {
-        const pagoResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Pagos/Insertar', {
+        const pagoResponse = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Pagos/Insertar', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ const Procesando = () => {
         const pagoData = await pagoResponse.json();
         const pagoId = pagoData.iD_Pago;
 
-        const pedidoResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Pedidos/Insertar', {
+        const pedidoResponse = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Pedidos/Insertar', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const Procesando = () => {
         for (const plato of carrito) {
           const precio = plato.isPromotion ? parseFloat(plato.precioConDescuento) : plato.precio_Referencia;
           const subtotal = precio * plato.cantidad;
-          await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/PedidoClientes/Insertar', {
+          await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/PedidoClientes/Insertar', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

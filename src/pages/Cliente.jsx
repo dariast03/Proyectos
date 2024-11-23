@@ -28,7 +28,7 @@ const Cliente = ({ setUsuarioCompleto }) => {
       return;
     }
 
-    const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Clientes/Insertar', {
+    const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Clientes/Insertar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -23,7 +23,7 @@ const MenuAdmin = ({ setIsLoggedIn }) => {
     setRestauranteId(id);
     const fetchMenus = async () => {
       try {
-        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Menus/Listar');
+        const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Menus/Listar');
         const data = await response.json();
         const filteredMenus = data.filter(menu => menu.iD_Restaurante === parseInt(id, 10));
         setMenus(filteredMenus);
@@ -33,7 +33,7 @@ const MenuAdmin = ({ setIsLoggedIn }) => {
     };
     const fetchPlatos = async () => {
       try {
-        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Platos/Listar');
+        const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Platos/Listar');
         const data = await response.json();
         const filteredPlatos = data.filter(plato => {
           const menu = menus.find(menu => menu.iD_Plato === plato.iD_Plato);
@@ -46,7 +46,7 @@ const MenuAdmin = ({ setIsLoggedIn }) => {
     };
     const fetchPromociones = async () => {
       try {
-        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Promociones/Listar');
+        const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Promociones/Listar');
         const data = await response.json();
         setPromociones(data);
       } catch (error) {
@@ -79,7 +79,7 @@ const MenuAdmin = ({ setIsLoggedIn }) => {
       const formData = new FormData();
       formData.append('file', imagenPlato);
       formData.append('fileName', imagenPlato.name);
-      const uploadResponse = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Platos/SubirImagen?fileName=${imagenPlato.name}`, {
+      const uploadResponse = await fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Platos/SubirImagen?fileName=${imagenPlato.name}`, {
         method: 'POST',
         body: formData,
       });
@@ -92,7 +92,7 @@ const MenuAdmin = ({ setIsLoggedIn }) => {
     }
     const platoData = { ...newPlato, imagenUrl };
     try {
-      const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Platos/Insertar', {
+      const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Platos/Insertar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ const MenuAdmin = ({ setIsLoggedIn }) => {
           iD_Restaurante: restauranteId,
           iD_Plato: plato.iD_Plato,
         };
-        const menuResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Menus/Insertar', {
+        const menuResponse = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Menus/Insertar', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

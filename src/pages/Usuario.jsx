@@ -9,7 +9,7 @@ const CreateUser = ({ setIsLoggedIn, setUsuarioCompleto }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Insertar', {
+    const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Usuarios/Insertar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ const CreateUser = ({ setIsLoggedIn, setUsuarioCompleto }) => {
 
     if (response.ok) {
 
-      const usuariosResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Listar');
+      const usuariosResponse = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Usuarios/Listar');
       if (usuariosResponse.ok) {
         const usuarios = await usuariosResponse.json();
 
@@ -58,7 +58,7 @@ const CreateUser = ({ setIsLoggedIn, setUsuarioCompleto }) => {
       return;
     }
 
-    const clientesResponse = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Clientes/Listar');
+    const clientesResponse = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Clientes/Listar');
     if (clientesResponse.ok) {
       const clientes = await clientesResponse.json();
 
@@ -69,7 +69,7 @@ const CreateUser = ({ setIsLoggedIn, setUsuarioCompleto }) => {
         setUsuarioCompleto(true);
         navigate('/');
       } else {
-        const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Buscar/${userId}`);
+        const response = await fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Usuarios/Buscar/${userId}`);
         if (response.ok) {
           const cliente = await response.json();
           if (!cliente) {

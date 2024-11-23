@@ -17,7 +17,7 @@ const Promotions = ({ handleAddToCart }) => {
 
     const fetchPlatos = async () => {
       try {
-        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Platos/Listar');
+        const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Platos/Listar');
         const data = await response.json();
         setPlatos(data);
       } catch (error) {
@@ -27,7 +27,7 @@ const Promotions = ({ handleAddToCart }) => {
 
     const fetchPromociones = async () => {
       try {
-        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Promociones/Listar');
+        const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Promociones/Listar');
         const data = await response.json();
         setPromociones(data.filter(promo => promo.descripcion_Promocion !== "null"));
       } catch (error) {

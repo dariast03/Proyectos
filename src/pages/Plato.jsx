@@ -11,7 +11,7 @@ const EditarPlato = () => {
   useEffect(() => {
     const fetchPlato = async () => {
       try {
-        const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Platos/Buscar/${id}`);
+        const response = await fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Platos/Buscar/${id}`);
         const data = await response.json();
         setPlato(data);
       } catch (error) {
@@ -43,7 +43,7 @@ const EditarPlato = () => {
       formData.append('file', imagenPlato);
       formData.append('fileName', imagenPlato.name);
 
-      const uploadResponse = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Platos/SubirImagen?fileName=${imagenPlato.name}`, {
+      const uploadResponse = await fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Platos/SubirImagen?fileName=${imagenPlato.name}`, {
         method: 'POST',
         body: formData,
       });
@@ -59,7 +59,7 @@ const EditarPlato = () => {
     const platoData = { ...plato, imagenUrl };
 
     try {
-      const response = await fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Platos/Actualizar/${id}`, {
+      const response = await fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Platos/Actualizar/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

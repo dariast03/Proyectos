@@ -10,7 +10,7 @@ const Inicio = ({ isLoggedIn, handleAddToCart }) => {
 
     const fetchCliente = async () => {
       try {
-        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Clientes/Listar');
+        const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Clientes/Listar');
         const clientes = await response.json();
         const clienteEncontrado = clientes.find(c => c.iD_Usuario === parseInt(usuarioId, 10));
         if (clienteEncontrado) {
@@ -30,7 +30,7 @@ const Inicio = ({ isLoggedIn, handleAddToCart }) => {
 
     const fetchPlatos = async () => {
       try {
-        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Platos/Listar');
+        const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Platos/Listar');
         const data = await response.json();
         setPlatos(data);
       } catch (error) {

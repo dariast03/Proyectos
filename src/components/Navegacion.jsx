@@ -17,7 +17,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, carrito }) => {
     setClienteId(storedClienteId);
 
     if (usuarioId) {
-      fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Buscar/${usuarioId}`)
+      fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Usuarios/Buscar/${usuarioId}`)
         .then(response => response.json())
         .then(data => {
           setImagenPerfilUrl(data.imagenPerfilUrl);
@@ -27,7 +27,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, carrito }) => {
 
     const fetchPagos = async () => {
       try {
-        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Pagos/Listar');
+        const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Pagos/Listar');
         const data = await response.json();
         const pagosCliente = data.filter(pago => pago.iD_Cliente === parseInt(storedClienteId, 10));
         const pagosIds = pagosCliente.map(pago => pago.iD_Pago);
@@ -46,7 +46,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, carrito }) => {
     if (pagosIds.length > 0) {
       const fetchNotificaciones = async () => {
         try {
-          const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Notificaciones/Listar');
+          const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Notificaciones/Listar');
           const data = await response.json();
           const notificacionesFiltradas = data.filter(notificacion => pagosIds.includes(notificacion.pedido.iD_Pago));
           setNotificaciones(notificacionesFiltradas);

@@ -10,7 +10,7 @@ const Menu = ({ isLoggedIn, handleAddToCart }) => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const response = await fetch('https://sj3qgblc-7263.brs.devtunnels.ms/api/Menus/Listar');
+        const response = await fetch('https://51r87rnm-7263.brs.devtunnels.ms/api/Menus/Listar');
         const data = await response.json();
         setMenus(data);
       } catch (error) {

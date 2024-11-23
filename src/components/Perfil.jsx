@@ -9,7 +9,7 @@ const ProfileMenu = ({ isLoggedIn, setIsLoggedIn }) => {
   useEffect(() => {
     const usuarioId = localStorage.getItem('usuarioId');
     if (usuarioId) {
-      fetch(`https://sj3qgblc-7263.brs.devtunnels.ms/api/Usuarios/Buscar/${usuarioId}`)
+      fetch(`https://51r87rnm-7263.brs.devtunnels.ms/api/Usuarios/Buscar/${usuarioId}`)
         .then(response => response.json())
         .then(data => {
           setImagenPerfilUrl(data.imagenPerfilUrl);
